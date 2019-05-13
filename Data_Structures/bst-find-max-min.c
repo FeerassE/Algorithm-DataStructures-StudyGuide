@@ -48,14 +48,28 @@ Node* CreateNode(Node* root, int data){
 }
 
 int FindMin(Node* root) {
-
     if(root == NULL){
         printf("Error: no min found.\n");
         return -1;
     }
-
-    while(current->left != NULL){
-        current = current-> left;
+    else if(root->left == NULL){
+        return root->data;
     }
-    return current->data;
+    else{
+        return FindMin(root->left);
+   }
+}
+
+
+int FindMax(Node* root){
+    if(root == NULL){
+        printf("Error: tree empty.\n");
+        return -1;
+    }
+    else if(root->right == NULL){
+        return root->data;
+    }
+    else{
+        return FindMax(root->right);
+    }
 }
